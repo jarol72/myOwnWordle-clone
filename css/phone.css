@@ -25,19 +25,35 @@ body {
   color: var(--clr-white);
 }
 
+.main {
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 50rem;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
 :is(.main__title, .footer) {
   text-align: center;
+}
+
+.main__title {
+  font-size: 2rem;
 }
 
 :is(#keyboard, #triesGrid) {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
+  max-width: 100%;
   margin: 2rem auto 1rem;
 }
 
 :is(.keyboard__row, .triesGrid__row) {
   display: flex;
+  width: 100%;
 }
 
 :is(.keyboard__key, .triesGrid__letter) {
@@ -45,8 +61,9 @@ body {
   justify-content: center;
   align-items: center;
   width: 5rem;
-  height: 5rem;
-  margin: .5rem;
+  height: 4rem;
+  gap: .5rem;
+  margin: .2rem;
   list-style: none;
   text-transform: uppercase;
   font-weight: 700;
@@ -54,6 +71,7 @@ body {
 
 .keyboard__key {
   --clr: var(--clr-white);
+  height: 3rem;
   border: 1px solid var(--clr);
   border-radius: .8rem;
   color: var(--clr);
@@ -78,6 +96,7 @@ body {
 
 #keyboard :is(#check, #delete) {
   width: 8rem;
+  font-size: .9rem;
   color: var(--clr);
   border-color: var(--clr);
 }
@@ -120,4 +139,11 @@ body {
 .lightgray {
   --clr: var(--clr-lightgray);
   color: var(--clr);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

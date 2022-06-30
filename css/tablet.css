@@ -1,0 +1,19 @@
+.main {
+  overflow: hidden;
+  align-items: center;
+  padding: .3rem
+}
+
+:is(#keyboard, #triesGrid) {
+  margin-top: .5rem;
+}
+
+.triesGrid__letter {
+  width: 5rem;
+  height: 5rem;
+}
+
+.keyboard__key {
+  width: 5rem;
+  height: 4rem;
+}
