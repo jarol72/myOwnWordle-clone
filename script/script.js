@@ -169,7 +169,7 @@ d.addEventListener('click', (e) => {
 });
 
 d.addEventListener('keyup', e => {
-  if (e.keyCode >= 65 && e.keyCode <= 90) {
+  if ((e.keyCode >= 65 && e.keyCode <= 90) || e.keyCode === 165) {
     if (answer.length < 5) {
       const key = d.getElementById(e.key);
       console.log(key)
