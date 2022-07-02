@@ -1,21 +1,22 @@
+import { words_5 } from "./words.js";
+
 const d = document,
   letters = [
     ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ñ'],
     ['delete', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'check'],
   ],
-  words = ['abeja', 'arena', 'balde', 'reloj', 'tilde', 'aroma', 'sabor', 'perro', 'canto', 'ganar', 'temor', 'sudar', 'jugar', 'pagar', 'ceder', 'celar', 'meson', 'robar', 'brisa', 'balon', 'bolsa', 'tomar', 'cenar', 'papel', 'media', 'arete', 'mocho', 'sobar', 'venta', 'grito', 'aguja', 'rodar', 'mirar', 'bruja', 'cielo', 'fuego', 'caldo', 'pollo', 'oveja', 'tinto', 'arroz', 'lapiz', 'viejo', 'nuevo'
-  ],
-  positions = [],
-  $fragment = d.createDocumentFragment(),
-  $triesGrid = d.getElementById('triesGrid'),
-  $keyboard = d.getElementById('keyboard');
+positions = [],
+$fragment = d.createDocumentFragment(),
+$triesGrid = d.getElementById('triesGrid'),
+$keyboard = d.getElementById('keyboard');
 
 let tries = 0,
   $keys = undefined,
   answer = [],
   index,
-  secretWord;
+  secretWord,
+  $restart;
 
 const resetBoard = () => {
   const $triesLetters = d.querySelectorAll('.triesGrid__letter');
@@ -23,16 +24,16 @@ const resetBoard = () => {
   $triesLetters.forEach(tl => tl.classList.remove('yellow'));
   $triesLetters.forEach(tl => tl.classList.remove('lightgray'));
   $triesLetters.forEach(tl => tl.textContent = '');
-  
-  const $keyboardKeys = d.querySelectorAll('.keyboard__key');
-  $keyboardKeys.forEach(k => k.disabled = false);
-  
+
+  /* const $keyboardKeys = d.querySelectorAll('.keyboard__key');
+  $keyboardKeys.forEach(k => k.disabled = false); */
+
   tries = 0;
 
   $keys.forEach(key => key.disabled = false);
-
+  
   $restart.style.opacity = '0';
-  answer = []
+  answer = [];
 }
 
 const newGame = () => {
@@ -43,8 +44,8 @@ const newGame = () => {
   } else {
     resetBoard();
   }
-  index = Math.floor(Math.random() * 10);
-  secretWord = words[index].split('');
+  index = Math.floor(Math.random() * words_5.length);
+  secretWord = words_5[index].split('');
   console.log(secretWord);
 };
 
@@ -70,7 +71,7 @@ const createKeyboard = () => {
     let row = d.createElement("section");
     row.classList.add('keyboard__row')
     line.map(letter => {
-      $key = d.createElement('button');
+      const $key = d.createElement('button');
       $key.textContent = letter;
       $key.id = letter;
       $key.classList.add('keyboard__key');
@@ -113,8 +114,9 @@ const checkWord = () => {
   if (answer.join('') === secretWord.join('')) {
     setTimeout(() => {
       alert('Adivinaste la palabra!');
+      $restart.focus();
     }, 250);
-
+    
     disbleKeyboard();
     showRestartButton();
   };
@@ -162,6 +164,7 @@ d.addEventListener('click', (e) => {
 
   if (e.target.matches('.restart')) {
     newGame();
+    e.target.blur();
   }
 });
 
@@ -179,7 +182,7 @@ d.addEventListener('keyup', e => {
     }
   }
 
-  if (e.keyCode === 13) {
+  if (e.keyCode === 13 && answer.length > 0) {
     checkWord();
   }
 

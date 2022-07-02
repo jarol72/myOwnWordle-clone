@@ -17,3 +17,7 @@
   width: 5rem;
   height: 4rem;
 }
+
+#keyboard :is(#check, #delete) {
+  font-size: 1.3rem;
+}
