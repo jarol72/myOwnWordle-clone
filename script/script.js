@@ -4,7 +4,7 @@ const d = document,
     ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ñ'],
     ['delete', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'check'],
   ],
-  words = ['abeja', 'arena', 'balde', 'reloj', 'tilde', 'aroma', 'sabor', 'perro', 'canto', 'ganar'
+  words = ['abeja', 'arena', 'balde', 'reloj', 'tilde', 'aroma', 'sabor', 'perro', 'canto', 'ganar', 'temor', 'sudar', 'jugar', 'pagar', 'ceder', 'celar', 'meson', 'robar', 'brisa', 'balon', 'bolsa', 'tomar', 'cenar', 'papel', 'media', 'arete', 'mocho', 'sobar', 'venta', 'grito', 'aguja', 'rodar', 'mirar', 'bruja', 'cielo', 'fuego', 'caldo', 'pollo', 'oveja', 'tinto', 'arroz', 'lapiz', 'viejo', 'nuevo'
   ],
   positions = [],
   $fragment = d.createDocumentFragment(),
